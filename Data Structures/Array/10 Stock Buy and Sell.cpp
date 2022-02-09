@@ -22,6 +22,6 @@ int maxProfit(vector<int>& prices) {
 
 //Problem Link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
-/********************************************************************************************
+/********************************************************************************************/
 
 //Try reading different variations of this problem.
