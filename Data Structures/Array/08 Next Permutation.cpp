@@ -11,13 +11,13 @@ void nextPermutation(vector<int>& arr) {
 	if(numberBeforePeakFromRight<0)
 		reverse(arr.begin(), arr.end());
 	else{
-		int smallestNumberGreaterThanPeak;
+		int smallestNumberGreaterThanPeaksLeft;
 		for(int i=arr_size-1; i>numberBeforePeakFromRight; i--)
 			if(arr[i] > arr[numberBeforePeakFromRight]){
-				smallestNumberGreaterThanPeak = i;
+				smallestNumberGreaterThanPeaksLeft = i;
 				break;
 			}
-		swap(arr[numberBeforePeakFromRight], arr[smallestNumberGreaterThanPeak]);
+		swap(arr[numberBeforePeakFromRight], arr[smallestNumberGreaterThanPeaksLeft]);
 		reverse(arr.begin() + numberBeforePeakFromRight + 1, arr.end());
 	}
 }

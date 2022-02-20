@@ -2,16 +2,17 @@
 
 int maxSubArray(vector<int>& arr) {
         int maxSumFinal = arr[0], maxEndingHere = 0;
-        int startingIndexOfMaxSubarray = 0, endingIndexOfMaxSubarray = 0;
+        int startingIndexOfMaxSubarray = 0, endingIndexOfMaxSubarray = 0, currentStartIndex = 0;
         int arr_size = arr.size();
         for(int i=0; i<arr_size; i++){
                 maxEndingHere += arr[i];
                 if(maxEndingHere > maxSumFinal){
+                        startingIndexOfMaxSubarray = currentStartIndex;
                         endingIndexOfMaxSubarray = i;
                         maxSumFinal = maxEndingHere;
                 }
                 if(maxEndingHere < 0){
-                        startingIndexOfMaxSubarray = i+1;
+                        currentStartIndex = i+1;
                         maxEndingHere = 0;
                 }
         }
