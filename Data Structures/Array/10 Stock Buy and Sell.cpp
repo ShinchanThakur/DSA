@@ -4,13 +4,14 @@
 
 int maxProfit(vector<int>& prices) {
     int arr_size = prices.size();
-    int buyDay = 0, sellDay = 0, maxProfit = 0, profitForSellingToday;
+    int currentBuyDay = 0, buyDay = 0, sellDay = 0, maxProfit = 0, profitForSellingToday;
     for(int i=0; i<arr_size; i++){
-    	if(prices[buyDay] > prices[i])
-    		buyDay = i;
-    	profitForSellingToday = prices[i] - prices[buyDay];
+    	if(prices[currentBuyDay] > prices[i])
+    		currentBuyDay = i;
+    	profitForSellingToday = prices[i] - prices[currentBuyDay];
     	if(profitForSellingToday > maxProfit){
     		maxProfit = profitForSellingToday;
+            buyDay = currentBuyDay;
     		sellDay = i;
     	}
     }
