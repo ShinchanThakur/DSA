@@ -2,23 +2,23 @@
 
 void nextPermutation(vector<int>& arr) {
 	int arr_size =  arr.size();
-	int peak = -1;
+	int numberBeforePeakFromRight = -1;
 	for(int i=arr_size-2; i>=0; i--)
 		if(arr[i] < arr[i+1]){
-			peak = i;
+			numberBeforePeakFromRight = i;
 			break;
 		}      
-	if(peak<0)
+	if(numberBeforePeakFromRight<0)
 		reverse(arr.begin(), arr.end());
 	else{
 		int smallestNumberGreaterThanPeak;
-		for(int i=arr_size-1; i>peak; i--)
-			if(arr[i] > arr[peak]){
+		for(int i=arr_size-1; i>numberBeforePeakFromRight; i--)
+			if(arr[i] > arr[numberBeforePeakFromRight]){
 				smallestNumberGreaterThanPeak = i;
 				break;
 			}
-		swap(arr[peak], arr[smallestNumberGreaterThanPeak]);
-		reverse(arr.begin() + peak + 1, arr.end());
+		swap(arr[numberBeforePeakFromRight], arr[smallestNumberGreaterThanPeak]);
+		reverse(arr.begin() + numberBeforePeakFromRight + 1, arr.end());
 	}
 }
 
