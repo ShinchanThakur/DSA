@@ -20,7 +20,7 @@ int findDuplicate(vector<int>& arr) {
 	return slow;
 }
 
-//Time Complexity: O(n*log(n))
-//Space Complexity: O(n)
+//Time Complexity: O(n)
+//Space Complexity: O(1)
 
 // Problem Link: https://leetcode.com/problems/find-the-duplicate-number/
