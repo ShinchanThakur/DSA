@@ -1,25 +1,24 @@
 //MERGE SORT
 
 void fillTemperoryArrays(int leftArray[], int leftArraySize, int rightArray[], int rightArraySize, int arr[], int start){
-	int j = start;
 	for(int i=0; i<leftArraySize; i++)
-		leftArray[i] = arr[j++];
+		leftArray[i] = arr[start++];
 	for(int i=0; i<rightArraySize; i++)
-		rightArray[i] = arr[j++];
+		rightArray[i] = arr[start++];
 }
 
 void mergeSortedArrays(int leftArray[], int leftArraySize, int rightArray[], int rightArraySize, int arr[], int start){
-	int leftArrayIndex = 0, rightArrayIndex = 0, arrayIndex = start;
+	int leftArrayIndex = 0, rightArrayIndex = 0;
 	while(leftArrayIndex < leftArraySize and rightArrayIndex < rightArraySize){
 		if(leftArray[leftArrayIndex] <= rightArray[rightArrayIndex])
-			arr[arrayIndex++] = leftArray[leftArrayIndex++];
+			arr[start++] = leftArray[leftArrayIndex++];
 		else
-			arr[arrayIndex++] = rightArray[rightArrayIndex++];
+			arr[start++] = rightArray[rightArrayIndex++];
 	}
 	while(leftArrayIndex < leftArraySize)
-		arr[arrayIndex++] = leftArray[leftArrayIndex++];
+		arr[start++] = leftArray[leftArrayIndex++];
 	while(rightArrayIndex < rightArraySize)
-		arr[arrayIndex++] = rightArray[rightArrayIndex++];
+		arr[start++] = rightArray[rightArrayIndex++];
 }
 
 void merge(int arr[], int start, int mid, int end)

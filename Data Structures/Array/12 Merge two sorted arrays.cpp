@@ -3,8 +3,7 @@
 //USING INSERTION SORT ALGORITHM
 
 void sendFirstElementToRightPlaceUsingInsertionSort(vector<int>& arr, int arr_size){
-	int firstElement = arr[0];
-	int i;
+	int firstElement = arr[0], i;
 	for(i=1; i<arr_size and arr[i]<firstElement; i++)
 		arr[i-1] = arr[i];
 	arr[i-1] = firstElement;

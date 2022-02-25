@@ -3,39 +3,39 @@
 //Segregate 0s and 1s in an array
 
 void segregate0and1(int arr[], int arr_size) {
-    int left = 0, right = arr_size-1;
-    while(left<right){
-        while(arr[left]==0 and left<right)
-            left++;
-        while(arr[right]==1 and left<right)
-            right--;
-        if(left<right){
-            swap(arr[left], arr[right]);
-            left++;
-            right--;
-        }
-    }
+    for(int curr=0, lastZeroIndex=0; curr<arr_size; curr++)
+        if(arr[curr] == 0)
+            swap(arr[lastZeroIndex++], arr[curr]);
 }
 
 //Time Complexity: O(n)
 //Space Complexity: O(1)
+
+//Problem Link: https://practice.geeksforgeeks.org/problems/segregate-0s-and-1s5106/1/#
+//              https://leetcode.com/problems/move-zeroes/
+
+
+//ORDER IS MAINTAINED
+//Continue from here: https://www.geeksforgeeks.org/rearrange-positive-and-negative-numbers/
 
 //*************************************************************************************************
 
 //Segregate 0s, 1s and 2s in an array
 
-void sort012(int arr[], int arr_size) {
-    int zero = 0, pointer = 0, two = arr_size-1;
-    while(pointer<=two){
-        switch(arr[pointer]){
-            case 0: swap(arr[zero++], arr[pointer++]);
-                    break;
-            case 1: pointer++;
-                    break;
-            case 2: swap(arr[pointer], arr[two--]);
-        }
-    }
+void sort012(vector<int>& nums) {
+        int lastZeroIndex = 0, firstTwoIndex = nums.size()-1, curr = 0;
+        while(curr <= firstTwoIndex)
+                switch(nums[curr]){
+                        case 0: swap(nums[lastZeroIndex++], nums[curr++]);
+                                break;
+                        case 1: curr++;
+                                break;
+                        case 2: swap(nums[curr], nums[firstTwoIndex--]);
+                                break;
+                }
 }
 
 //Time Complexity: O(n)
 //Space Complexity: O(1)
+
+//Problem Link: https://leetcode.com/problems/sort-colors/
