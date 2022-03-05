@@ -4,51 +4,40 @@
 //Three pointers and binary search -> (n^3)logn
 //Two pointers and simple two sum -> n^3
 vector<vector<int>> fourSum(vector<int>& arr, int target) {
-        vector<vector<int>> v;
-        int n = arr.size();
-        sort(arr.begin(), arr.end());
-        for(int i=0;i<n-3;i++)
-        {
-            if(i!=0 and arr[i]==arr[i-1])
+    vector<vector<int>> allQuads;
+    sort(arr.begin(), arr.end());
+    int n = arr.size();
+    for(int i=0; i<n-3; i++){
+        if(i != 0 and arr[i] == arr[i-1])
+            continue;
+        for(int j = i+1; j < n-2; j++){
+            if(j != i+1 and arr[j] == arr[j-1])
                 continue;
-            for(int j=i+1;j<n-2;j++)
-            {
-                if(j!=i+1 and arr[j]==arr[j-1])
-                    continue;
-                int start = j+1, end = n-1;
-                while(start<end)
-                {
-                    long long int sum = arr[i];
-                    sum += arr[j];
-                    sum += arr[start];
-                    sum += arr[end];
-                    if(sum<target)
-                        start++;
-                    else if(sum>target)
-                        end--;
-                    else{
-                        vector<int> ans;
-                        ans.push_back(arr[i]);
-                        ans.push_back(arr[j]);
-                        ans.push_back(arr[start]);
-                        ans.push_back(arr[end]);
-                        v.push_back(ans);
-                        
-                        while(start<end and arr[start]==arr[start+1])
-                            start++;
-                        while(start<end and arr[end]==arr[end-1])
-                            end--;
-                        start++;
-                        end--;
-                    }
+            int left = j+1, right = n-1;
+            while(left < right){
+                long long int sum = arr[i]; sum += arr[j]; sum += arr[left]; sum += arr[right];
+                if(sum < target)
+                    left++;
+                else if(sum > target)
+                    right--;
+                else{
+                    allQuads.push_back({arr[i], arr[j], arr[left], arr[right]});
+                    while(left < right and arr[left] == arr[left+1])
+                        left++;
+                    while(left < right and arr[right] == arr[right-1])
+                        right--;
+                    left++;
+                    right--;
                 }
             }
         }
-        return v;
     }
+    return allQuads;
+}
 
 //This solution works and hashing fails causing TLE
 //Look into this matter
+//See this for hashing based solution - https://www.techiedelight.com/4-sum-problem/#:~:text=4%2Dsum%20problem%3A%20Given%20an,quadruplets)%20having%20a%20given%20sum.&text=Output%3A%20Quadruplet%20exists.
 
 /*************************************************************************************/
     

@@ -49,6 +49,12 @@ int uniquePaths(int m, int n){
 
 //COMBINATORICS
 
+// We can visualize any path as string of R and D
+// Here we have m-1 D and n-1 R
+// So total places are m+n-2
+// We need to choose m-1 places for placing D out of total m+n-2 places
+// Therefore nCr(m+n-2, m-1) is the answer
+
 int nCr(int n, int r){
 	r = min(r, n-r);
 	double ncr = 1;

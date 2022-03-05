@@ -35,15 +35,15 @@ vector<int> twoSum(vector<int>& nums, int target){
 vector<int> twoSum(vector<int>& nums, int target){
 	int num1, num2;
 	vector<int> result;
-	unordered_map<int, int> indexMap;
+	unordered_map<int, int> elementIndexMap;
 	for(int i=0; i<nums.size(); i++){
-		if(indexMap.find(target - nums[i]) != indexMap.end()){
+		if(elementIndexMap.find(target - nums[i]) != elementIndexMap.end()){
 			num1 = i;
-			num2 = indexMap[target - nums[i]];
+			num2 = elementIndexMap[target - nums[i]];
 			result = {num1, num2};
 			break;
 		}
-		indexMap[nums[i]] = i;
+		elementIndexMap[nums[i]] = i;
 	}
 	return result;
 }
