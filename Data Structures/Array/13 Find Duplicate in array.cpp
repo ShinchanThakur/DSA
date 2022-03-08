@@ -24,3 +24,6 @@ int findDuplicate(vector<int>& arr) {
 //Space Complexity: O(1)
 
 // Problem Link: https://leetcode.com/problems/find-the-duplicate-number/
+//				 https://leetcode.com/problems/single-number/
+//				 https://leetcode.com/problems/missing-number/
+//				 https://leetcode.com/problems/set-mismatch/

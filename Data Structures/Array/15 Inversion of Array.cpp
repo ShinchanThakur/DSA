@@ -42,4 +42,5 @@ int countInversions(int arr[], int n){
 //Time Complexity: O(n*log(n))
 //Space Complexity: O(n)
 
-//Problem Link: https://www.codingninjas.com/codestudio/problems/615?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website
+//Problem Link: https://leetcode.com/problems/global-and-local-inversions/
+//				https://www.codingninjas.com/codestudio/problems/615?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website

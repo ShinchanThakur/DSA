@@ -65,5 +65,6 @@ void mergeTwoSortedArrays(vector<int>& arr, int arr_size, vector<int>& brr, int 
 /*******************************************************************************************/
 
 //Problem Link: https://leetcode.com/problems/merge-sorted-array/
+//				https://leetcode.com/problems/squares-of-a-sorted-array/
 
 //Read this post for solutions in O(n)

@@ -22,3 +22,7 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
 //Space Complexity: O(n)
 
 // Problem Link: https://leetcode.com/problems/merge-intervals/
+//               https://leetcode.com/problems/insert-interval/
+//               https://leetcode.com/problems/teemo-attacking/
+//               https://leetcode.com/problems/partition-labels/
+//               https://leetcode.com/problems/interval-list-intersections/
