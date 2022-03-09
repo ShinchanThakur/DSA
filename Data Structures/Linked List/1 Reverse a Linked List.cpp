@@ -36,6 +36,6 @@ ListNode* reverseList(ListNode* head) {
 }
 
 //Time Complexity: O(n)
-//Space Complexity: O(n)
+//Space Complexity: O(1)
 
 //Problem Link: https://leetcode.com/problems/reverse-linked-list/
