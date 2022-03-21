@@ -1,6 +1,6 @@
 //FIND Nth ROOT OF M
 
-double power(int a, int n){
+double power(double a, int n){
     double res = 1.0;
     for(int i=0; i<n; i++)
         res *= a;
