@@ -1,4 +1,4 @@
-//GET Nth PEMUTATION
+//GET Kth PEMUTATION
 
 string getPermutation(int n, int k) {
     vector<int> arr(n);
