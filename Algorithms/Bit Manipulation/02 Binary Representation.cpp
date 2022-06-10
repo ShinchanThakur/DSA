@@ -48,3 +48,6 @@ string getBinaryRep(int n)
 
 //Time and space complexity: O(1)
 //Problem link: https://practice.geeksforgeeks.org/problems/binary-representation5003/1/
+
+
+//For more details, read from here - https://www.geeksforgeeks.org/c-bitset-and-its-application/
