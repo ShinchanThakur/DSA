@@ -14,31 +14,15 @@
 // str = "abababab"
 // Z[] = {x, 0, 6, 0, 4, 0, 2, 0}
 
-void getZindex(string s, int z[], int sLength){
-    int startOfCurrMatch = 0, endOfCurrMatch = 0, currMatchingInd, matchingLength, remainingMatchingInterval;
-    for(int i=1; i<sLength; i++){
-        if(i > endOfCurrMatch){
-            startOfCurrMatch = endOfCurrMatch = i;
-            while(endOfCurrMatch < sLength and s[endOfCurrMatch - startOfCurrMatch] == s[endOfCurrMatch])
-                endOfCurrMatch++;
-            endOfCurrMatch--;
-            matchingLength = endOfCurrMatch - startOfCurrMatch + 1;
-            z[i] = matchingLength;
-        }
-        else{
-            currMatchingInd = i - startOfCurrMatch;
-            remainingMatchingInterval = endOfCurrMatch - i + 1;
-            if(z[currMatchingInd] < remainingMatchingInterval)
-                z[i] = z[currMatchingInd];
-            else{
-                startOfCurrMatch = i;
-                while(endOfCurrMatch < sLength and s[endOfCurrMatch - startOfCurrMatch] == s[endOfCurrMatch])
-                    endOfCurrMatch++;
-                endOfCurrMatch--;
-                matchingLength = endOfCurrMatch - startOfCurrMatch + 1;
-                z[i] = matchingLength;
-            }
-        }
+void getZindex(string s, int z[], int n){
+    //l to r -> already matched
+    for (int i = 1, l = 0, r = 0; i < n; ++i) {
+        if (i <= r)         //l < i < r
+            z[i] = min (r - i + 1, z[i - l]);
+        while (i + z[i] < n && s[z[i]] == s[i + z[i]])
+            ++z[i];
+        if (i + z[i] - 1 > r)
+            l = i, r = i + z[i] - 1;
     }
 }
 
