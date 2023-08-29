@@ -1,41 +1,49 @@
 // REVERSE A LINKED LIST
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 
-//RECURSIVE
-
-ListNode* reverseList(ListNode* head) {
-    if(head == NULL or head->next == NULL)
+class Solution
+{
+public:
+    ListNode *reverseListIterative(ListNode *head)
+    {
+        ListNode *current_p = head, *prev_p = NULL, *next_p;
+        while (current_p)
+        {
+            next_p = current_p->next;
+            current_p->next = prev_p;
+            prev_p = current_p;
+            current_p = next_p;
+        }
+        head = prev_p;
         return head;
-    ListNode *newHead = reverseList(head->next);
-    head->next->next = head;
-    head->next = NULL;
-    return newHead;
-}
-
-//ITERATIVE
-
-ListNode* reverseList(ListNode* head) {
-    ListNode *prev = NULL, *curr = head, *nex;
-    while(curr){
-        nex = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = nex;
     }
-    return prev;
-}
 
-//Time Complexity: O(n)
-//Space Complexity: O(1)
+    ListNode *reverseListRecursive(ListNode *current_p)
+    {
+        if (current_p == NULL || current_p->next == NULL)
+            return current_p;
+        ListNode *new_head = reverseListRecursive(current_p->next);
+        ListNode *new_tail = current_p->next;
+        new_tail->next = current_p;
+        current_p->next = NULL;
+        return new_head;
+    }
 
-//Problem Link: https://leetcode.com/problems/reverse-linked-list/
+    ListNode *reverseList(ListNode *head)
+    {
+        return reverseListIterative(head);
+    }
+};
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+// Problem Link: https://leetcode.com/problems/reverse-linked-list/
