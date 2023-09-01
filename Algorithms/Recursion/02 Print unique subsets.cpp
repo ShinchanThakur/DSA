@@ -1,57 +1,68 @@
-//PRINT ALL UNIQUE SUBSETS
+// PRINT ALL UNIQUE SUBSETS
 
-//USING SET DATASTRUCTURE
+// USING SET DATASTRUCTURE
 
-void generateAllSubsets(vector<int> &arr, set<vector<int>> &sett, vector<int> subset, int ind){
-    if(ind == arr.size()){
-        sort(subset.begin(), subset.end());
-        sett.insert(subset);
+void recursionHelperForSetSolution(vector<int> &nums, int index, vector<int> &subset, set<vector<int>> &uniqueSubsets)
+{
+    if (index == nums.size())
+    {
+        uniqueSubsets.insert(subset);
         return;
     }
-    subset.push_back(arr[ind]);
-    generateAllSubsets(arr, sett, subset, ind+1);
+    // take current element
+    subset.push_back(nums[index]);
+    recursionHelperForSetSolution(nums, index + 1, subset, uniqueSubsets);
+    // do not take current element
     subset.pop_back();
-    generateAllSubsets(arr, sett, subset, ind+1);
+    recursionHelperForSetSolution(nums, index + 1, subset, uniqueSubsets);
 }
 
-vector<vector<int>> subsetsWithDup(vector<int>& arr) {
-    vector<vector<int>> uniqueSubsets;
-    set<vector<int>> sett;
+vector<vector<int>> uniqueUsingSet(vector<int> &nums)
+{
+    sort(nums.begin(), nums.end());
+    set<vector<int>> uniqueSubsets;
     vector<int> subset;
-    int ind = 0;
-    generateAllSubsets(arr, sett, subset, ind);
-    for(vector<int> subset: sett)
-        uniqueSubsets.push_back(subset);
-    return uniqueSubsets;
+    int index = 0;
+    recursionHelperForSetSolution(nums, index, subset, uniqueSubsets);
+    vector<vector<int>> uniqueSubsetsVector;
+    for (vector<int> uniqueSubset : uniqueSubsets)
+        uniqueSubsetsVector.push_back(uniqueSubset);
+    return uniqueSubsetsVector;
 }
 
-//Time complexity: O(2^n klog(x))   k->average size of subsets      x->size of set
-//Space complexity: 2*O(2^n k)        
+// Time complexity: O(2^n klog(x))   k->average size of subsets      x->size of set
+// Space complexity: 2*O(2^n k)
 
 /*******************************************************************************************************************/
 
-//OPTIMAL -> Without using set
+// OPTIMAL -> Without using set
 
-void generateAllSubsets(vector<int> &arr, vector<vector<int>> &uniqueSubsets, vector<int> &subset, int ind){
+void recursionHelperForVectorSolution(vector<int> &nums, int index, vector<int> &subset, vector<vector<int>> &uniqueSubsets)
+{
     uniqueSubsets.push_back(subset);
-    for(int i = ind; i<arr.size(); i++){
-        if(i != ind and arr[i] == arr[i-1])     continue;
-        subset.push_back(arr[i]);
-        generateAllSubsets(arr, uniqueSubsets, subset, i+1);
+    for (int i = index; i < nums.size(); i++)
+    {
+        // ignoring if the element is duplicate (except the first one)
+        if (i != index && nums[i] == nums[i - 1])
+            continue;
+        // take current element in subset
+        subset.push_back(nums[i]);
+        recursionHelperForVectorSolution(nums, i + 1, subset, uniqueSubsets);
+        // do not take current element in subset
         subset.pop_back();
     }
 }
-
-vector<vector<int>> subsetsWithDup(vector<int>& arr) {
+vector<vector<int>> uniqueWithoutUsingSet(vector<int> &nums)
+{
+    sort(nums.begin(), nums.end());
     vector<vector<int>> uniqueSubsets;
     vector<int> subset;
-    sort(arr.begin(), arr.end());
-    int ind = 0;
-    generateAllSubsets(arr, uniqueSubsets, subset, ind);
+    int index = 0;
+    recursionHelperForVectorSolution(nums, index, subset, uniqueSubsets);
     return uniqueSubsets;
 }
 
-//Time complexity: O(2^n k)
-//Space complexity: O(2^n k)
+// Time complexity: O(2^n k)
+// Space complexity: O(2^n k)
 
-//Problem Link: https://leetcode.com/problems/subsets-ii/
+// Problem Link: https://leetcode.com/problems/subsets-ii/
